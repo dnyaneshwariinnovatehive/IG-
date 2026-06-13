@@ -25,6 +25,10 @@ api.interceptors.request.use(
 // Response interceptor: unwrap { success, data } envelope; handle 401
 api.interceptors.response.use(
   (response: AxiosResponse) => {
+    const ct = String(response.headers['content-type'] || '');
+    if (!ct.includes('application/json')) {
+      return Promise.reject(new Error('Non-JSON response'));
+    }
     const body = response.data;
     // Server wraps all responses as { success: true, data: ... }
     if (body && typeof body === 'object' && 'success' in body && 'data' in body) {
