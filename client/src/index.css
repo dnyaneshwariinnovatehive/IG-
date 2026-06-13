@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #0F172A;
+    --color-secondary: #1E293B;
+    --color-accent: #2563EB;
+    --color-purple: #8B5CF6;
+    --color-success: #10B981;
+    --color-warning: #F59E0B;
+    --color-danger: #EF4444;
+    --color-background: #F8FAFC;
+    --color-card: #FFFFFF;
+    --color-border: #E2E8F0;
+    --color-muted: #64748B;
+    --font-heading: 'Sora', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-primary);
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #F1F5F9; }
+  ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+
+  ::selection { background: rgba(37,99,235,0.2); color: var(--color-primary); }
+}
+
+@layer components {
+  .gradient-text {
+    background: linear-gradient(135deg, #2563EB, #8B5CF6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(var(--color-card), var(--color-card)) padding-box,
+                linear-gradient(135deg, #2563EB, #8B5CF6) border-box;
+    border: 2px solid transparent;
+    border-radius: 16px;
+  }
+
+  .glass {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .hero-grid {
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .drag-scroll {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+  }
+  .drag-scroll:active { cursor: grabbing; }
+  .drag-scroll::-webkit-scrollbar { display: none; }
+  .drag-scroll { scrollbar-width: none; }
+
+  .section-padding { padding: 80px 0; }
+
+  .container-custom {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+}
